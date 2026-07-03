@@ -146,20 +146,20 @@ export class IndexedStore implements PermanentIndexedStore {
       // groupCount: null
     };
 
-    return existing
-      ? _.merge(
-          existing,
-          data,
-          _.pick(existing, [
-            'firstSeen',
-            'lastMetaFetched',
-            'guestbook',
-            'images',
-            'friends',
-            'groups'
-          ])
-        )
-      : data;
+    if (!existing) {
+      return data;
+    }
+
+    return {
+      ...existing,
+      ...data,
+      firstSeen: existing.firstSeen,
+      lastMetaFetched: existing.lastMetaFetched,
+      guestbook: existing.guestbook,
+      images: existing.images,
+      friends: existing.friends,
+      groups: existing.groups
+    };
   }
 
   async storeProfile(character: ComplexCharacter): Promise<void> {
@@ -220,13 +220,14 @@ export class IndexedStore implements PermanentIndexedStore {
       return;
     }
 
-    const data = _.merge(existing, {
+    const data: ProfileRecord = {
+      ...existing,
       lastMetaFetched: Math.round(Date.now() / 1000),
       guestbook,
       friends,
       groups,
       images
-    });
+    };
 
     const tx = this.db.transaction(IndexedStore.STORE_NAME, 'readwrite');
     const store = tx.objectStore(IndexedStore.STORE_NAME);
