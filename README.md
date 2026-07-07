@@ -1,3 +1,13 @@
+<div align="center">
+
+[![Latest release](https://img.shields.io/github/v/release/Fchat-Horizon/Horizon?style=flat-square&label=release)](https://github.com/Fchat-Horizon/Horizon/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/Fchat-Horizon/Horizon/total?style=flat-square&label=downloads)](https://github.com/Fchat-Horizon/Horizon/releases)
+[![Nightly build](https://img.shields.io/github/actions/workflow/status/Fchat-Horizon/Horizon/nightly.yml?branch=development&style=flat-square&label=nightly)](https://github.com/Fchat-Horizon/Horizon/actions/workflows/nightly.yml)
+[![Locale check](https://img.shields.io/github/actions/workflow/status/Fchat-Horizon/Horizon/i18n_check.yml?branch=development&style=flat-square&label=locales)](https://github.com/Fchat-Horizon/Horizon/actions/workflows/i18n_check.yml)
+[![Translation status](https://img.shields.io/weblate/progress/horizon?server=https%3A%2F%2Ftranslate.horizn.moe&style=flat-square&label=translated)](https://translate.horizn.moe/engage/horizon/)
+
+</div>
+
 # Table of Contents <!-- omit in toc -->
 
 - [Download](#download)
@@ -162,7 +172,7 @@ You can then reference this input as a System Package or user-specific package:
       ];
 ```
 
-By default this flake input points to `main` as its source branch, which is what we use for _stable releases_. If you want to follow the beta update track, or use nightly builds, replace `main` with `beta` or `development` respectively in the `?ref=<source>` URL parameter for the Flake input.
+Our repository's default branch is `development`, which is not strictly guaranteed to build (nor is it expected to!)-- so note the `?ref=main` after the Git URL, which is what we use for _stable releases_. If you want to follow the beta update track, or use nightly builds, replace `main` with `beta` or `development` respectively in the `?ref=<source>` URL parameter for the Flake input.
 
 #### AppImage
 
